@@ -2,13 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MP3 Player</title>
+  <title>🎵 Now Playing</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #fdf9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .cute-windows-player {
+      width: 300px;
+      border: 2px solid #d0c0ff;
+      border-radius: 8px;
+      background: #fef9ff;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .player-header {
+      background: #c0a0ff;
+      color: white;
+      font-weight: bold;
+      padding: 6px 0;
+      font-size: 14px;
+      border-bottom: 1px solid #d0c0ff;
+    }
+
+    .player-controls {
+      display: flex;
+      justify-content: space-around;
+      background: #f0e6ff;
+      padding: 5px 0;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    .player-controls button {
+      border: none;
+      background: #e0d4ff;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .player-controls button:hover {
+      background: #d4c3ff;
+    }
+  </style>
 </head>
 <body>
-  <h2>🎵 Now Playing</h2>
-  <audio controls>
-    <source src="PinkPantheress - Stateside  Zara Larsson (Official Audio).mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+
+<div class="cute-windows-player">
+  <div class="player-header">🎵 Now Playing</div>
+
+  <!-- Audio element -->
+  <audio id="player" src="https://fnakwk.github.io/blog-audio/PinkPantheress%20-%20Stateside%20%20Zara%20Larsson%20(Official%20Audio).mp3"></audio>
+
+  <div class="player-controls">
+    <button onclick="player.currentTime -= 10">⏮️</button>
+    <button onclick="togglePlay()">⏯️</button>
+    <button onclick="player.currentTime += 10">⏭️</button>
+  </div>
+</div>
+
+<script>
+  const player = document.getElementById('player');
+
+  function togglePlay() {
+    if (player.paused) {
+      player.play();
+    } else {
+      player.pause();
+    }
+  }
+</script>
+
 </body>
 </html>
